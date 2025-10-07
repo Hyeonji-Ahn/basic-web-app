@@ -11,9 +11,14 @@ export default function QueryProcessor(query: string): string {
     return "hyeonjia";
   }
 
-  if(query.toLowerCase().includes("andrew id")) {
-    return "hyeonjia";
+  if (query.toLowerCase().includes("Which of the following numbers is the largest")) {
+    const numbers = query.match(/(\d+)/g);
+    if (numbers) {
+      const maxNumber = Math.max(...numbers.map(Number));
+      return maxNumber.toString();
+    }
   }
 
   return "";
+
 }
