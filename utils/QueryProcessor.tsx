@@ -43,7 +43,18 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
-  
+  if(query.toLowerCase().includes("prime")) {
+    const match = query.match(/is (\d+) a prime number/);
+    if (match) {
+      const n = parseInt(match[1], 10); 
+      if (n <= 1) return "no";
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return "no";
+      }
+      return "yes";
+    }
+  }
+
 
   return "";
 
