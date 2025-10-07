@@ -26,6 +26,24 @@ export default function QueryProcessor(query: string): string {
       return sum.toString();
     }
   }
+  
+  if(query.toLowerCase().includes("fibonacci")) {
+    const match = query.match(/fibonacci of (\d+)/);
+    if (match) {
+      const n = parseInt(match[1], 10);  
+      if (n <= 0) return "0";
+      if (n === 1) return "1";
+      let a = 0, b = 1, fib = 1;
+      for (let i = 2; i <= n; i++) {
+        fib = a + b;
+        a = b;
+        b = fib;
+      }
+      return fib.toString();
+    }
+  }
+
+  
 
   return "";
 
